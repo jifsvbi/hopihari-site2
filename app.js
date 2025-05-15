@@ -20,9 +20,9 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'login.html'));
 });
 
-// Rota para a página de cadastro
+// Rota para a página de cadastro (para exibir o formulário)
 app.get('/register', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'register.html'));
+    res.sendFile(path.join(__dirname, 'public', 'cadastro.html')); // Assumindo que seu arquivo de cadastro é cadastro.html
 });
 
 // Rota para a página de dashboard
