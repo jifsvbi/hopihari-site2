@@ -5,16 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro - Hopi Hari</title>
     <style>
-        /* Estilos CSS (mantive os seus estilos) */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
+        
         body {
-            background-image: url(mapa-hopi.jpeg);
+            background-image: url("img/mapahopihari.jpeg");
             background-size: cover;
             background-position: center;
             height: 100vh;
@@ -23,7 +22,7 @@
             align-items: center;
             position: relative;
         }
-
+        
         body::before {
             content: '';
             position: absolute;
@@ -34,7 +33,7 @@
             background-color: rgba(0, 0, 0, 0.6);
             z-index: 1;
         }
-
+        
         .register-container {
             background-color: rgba(255, 255, 255, 0.9);
             padding: 30px;
@@ -45,42 +44,42 @@
             position: relative;
             z-index: 2;
         }
-
+        
         .register-logo {
             text-align: center;
             margin-bottom: 20px;
         }
-
+        
         .register-logo img {
             width: 180px;
             height: auto;
         }
-
+        
         h1 {
             color: #FF6B00;
             text-align: center;
             margin-bottom: 25px;
             font-size: 28px;
         }
-
+        
         .input-row {
             display: flex;
             gap: 15px;
             margin-bottom: 15px;
         }
-
+        
         .input-group {
             margin-bottom: 15px;
             flex: 1;
         }
-
+        
         .input-group label {
             display: block;
             color: #333;
             margin-bottom: 5px;
             font-weight: 600;
         }
-
+        
         .input-group input {
             width: 100%;
             padding: 12px;
@@ -89,7 +88,7 @@
             font-size: 16px;
             transition: border 0.3s ease;
         }
-
+        
         .input-group input:focus {
             border-color: #FF6B00;
             outline: none;
@@ -104,12 +103,12 @@
             transition: border 0.3s ease;
             background-color: white;
         }
-
+        
         .input-group select:focus {
             border-color: #FF6B00;
             outline: none;
         }
-
+        
         .register-btn {
             background-color: #FF6B00;
             color: white;
@@ -123,33 +122,33 @@
             transition: background-color 0.3s ease;
             margin-top: 10px;
         }
-
+        
         .register-btn:hover {
             background-color: #E05A00;
         }
-
+        
         .login-link {
             margin-top: 20px;
             text-align: center;
             font-size: 14px;
         }
-
+        
         .login-link a {
             color: #FF6B00;
             text-decoration: none;
             font-weight: bold;
         }
-
+        
         .login-link a:hover {
             text-decoration: underline;
         }
-
+        
         @media (max-width: 600px) {
             .register-container {
                 padding: 20px;
                 margin: 0 15px;
             }
-
+            
             .input-row {
                 flex-direction: column;
                 gap: 0;
@@ -160,7 +159,7 @@
 <body>
     <div class="register-container">
         <div class="register-logo">
-            <img src="logo.png" alt="Logo Hopi Hari">
+            <img src="img/logo.png" alt="Logo Hopi Hari">
         </div>
         <h1>Cadastre-se</h1>
         <form id="registerForm">
@@ -208,17 +207,17 @@
     <script>
         document.getElementById('registerForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-
-            // Verificação de senha (mantive a sua lógica)
+            
+            // Verificação de senha
             const password = document.getElementById('password').value;
             const confirmPassword = document.getElementById('confirmPassword').value;
-
+            
             if (password !== confirmPassword) {
                 alert('As senhas não coincidem!');
                 return;
             }
-
-            // Preparar dados para envio (mantive a sua lógica)
+            
+            // Preparar dados para envio
             const formData = {
                 firstName: document.getElementById('firstName').value,
                 lastName: document.getElementById('lastName').value,
@@ -227,7 +226,7 @@
                 birthDate: document.getElementById('birthDate').value,
                 phone: document.getElementById('phone').value
             };
-
+            
             try {
                 const response = await fetch('/api/register', {
                     method: 'POST',
@@ -236,9 +235,9 @@
                     },
                     body: JSON.stringify(formData)
                 });
-
+                
                 const data = await response.json();
-
+                
                 if (response.ok) {
                     alert('Cadastro realizado com sucesso!');
                     window.location.href = 'login.html';
