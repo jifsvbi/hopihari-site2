@@ -1,0 +1,229 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Hopi Hari</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-image: url('https://senaisp.notion.site/image/attachment%3A96910306-7927-4d86-8ab8-01916a8e1c62%3Amapa-hopi.jpeg?table=block&id=1e892518-60df-8027-a3c1-f21360d8df26&spaceId=47033f8f-b3a0-4db5-9352-a3af32b719c1&width=1360&userId=&cache=v2');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+        
+        .login-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 400px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .login-logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .login-logo img {
+            width: 180px;
+            height: auto;
+        }
+        
+        h1 {
+            color: #FF6B00;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        .input-group label {
+            display: block;
+            color: #333;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border 0.3s ease;
+        }
+        
+        .input-group input:focus {
+            border-color: #FF6B00;
+            outline: none;
+        }
+        
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        .remember {
+            display: flex;
+            align-items: center;
+        }
+        
+        .remember input {
+            margin-right: 5px;
+        }
+        
+        .forgot a {
+            color: #FF6B00;
+            text-decoration: none;
+        }
+        
+        .forgot a:hover {
+            text-decoration: underline;
+        }
+        
+        .login-btn {
+            background-color: #FF6B00;
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .login-btn:hover {
+            background-color: #E05A00;
+        }
+        
+        .register {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+        
+        .register a {
+            color: #FF6B00;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .register a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 20px;
+                margin: 0 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <form action="login.html">
+            <button class="logout-btn" >Visitante</button>
+        </form>
+        <div class="login-logo">
+            <img src="data:image/png;base64,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" alt="Logo Hopi Hari">
+        </div>
+        <h1>Área do admin</h1>
+        <form id="loginForm">
+            <div class="input-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" placeholder="Seu e-mail" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Senha</label>
+                <input type="password" id="password" name="password" placeholder="Sua senha" required>
+            </div>
+            <div class="remember-forgot">
+                <div class="remember">
+                    <input type="checkbox" id="remember" name="remember">
+                    <label for="remember">Lembrar-me</label>
+                </div>
+                <div class="forgot">
+                    <a href="#">Esqueceu a senha?</a>
+                </div>
+            </div>
+            <button type="submit" class="login-btn">ENTRAR</button>
+            <div class="register">
+                Ainda não tem conta? <a href="cadastro.html">Cadastre-se</a>
+            </div>
+        </form>
+        
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                email: document.getElementById('email').value,
+                password: document.getElementById('password').value
+            };
+            
+            try {
+                const response = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    // Salvar dados do usuário no localStorage (para demonstração)
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                    
+                    // Redirecionar para a página principal (após login bem-sucedido)
+                    alert('Login realizado com sucesso!');
+                    window.location.href = '/dashboard.html';  // Página após login
+                } else {
+                    alert(`Erro: ${data.message || 'Credenciais inválidas'}`);
+                }
+            } catch (error) {
+                console.error('Erro:', error);
+                alert('Erro de conexão. Tente novamente mais tarde.');
+            }
+        });
+    </script>
+</body>
+</html>
